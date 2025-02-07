@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #88ff00, #00b7ff, #ff0000, #eeff00);
+            color: rgb(255, 0, 0);
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .container {
+            width: 40%;
+            margin: auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            margin-top: 50px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            animation: slideIn 1s ease-in-out;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        input, button {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+        
+        input {
+            background: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+        }
+        
+        button {
+            background: #ff0000;
+            color: rgb(0, 0, 0);
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        
+        button:hover {
+            background: #77ff00;
+            transform: scale(1.05);
+        }
+        
+        button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Register for Universal Quiz Game</h1>
+        <form id="registerForm">
+            <input type="text" id="username" placeholder="Enter your username" required>
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+    
+    <script>
+        document.getElementById("registerForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+            if (username && email) {
+                localStorage.setItem("quizUser", JSON.stringify({ username, email }));
+                alert("Registration Successful! Redirecting to the quiz...");
+                window.location.href = "index.html";
+            }
+        });
+    </script>
+</body>
+</html>
